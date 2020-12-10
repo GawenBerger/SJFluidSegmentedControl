@@ -252,13 +252,13 @@ public class SJFluidSegmentedControl: UIView, UIGestureRecognizerDelegate {
     open var shapeStyle: SJFluidSegmentedControlShapeStyle = .liquid
     
     /// The corner radius of the segmented control. Default is `0.0`.
-    @IBInspectable open var cornerRadius: CGFloat = 0.0 {
+    @IBInspectable open var segmentedControlCornerRadius: CGFloat = 0.0 {
         didSet {
-            self.layer.cornerRadius = cornerRadius
+            self.layer.cornerRadius = segmentedControlCornerRadius
             self.layer.masksToBounds = true
-            scrollView.layer.cornerRadius = cornerRadius
-            gradientViewContainer?.layer.cornerRadius = cornerRadius
-            selectorView.layer.cornerRadius = applyCornerRadiusToSelectorView ? cornerRadius : 0.0
+            scrollView.layer.cornerRadius = segmentedControlCornerRadius
+            gradientViewContainer?.layer.cornerRadius = segmentedControlCornerRadius
+            selectorView.layer.cornerRadius = applyCornerRadiusToSelectorView ? segmentedControlCornerRadius : 0.0
         }
     }
     
@@ -1328,7 +1328,7 @@ public class SJFluidSegmentedControl: UIView, UIGestureRecognizerDelegate {
     }
     
     fileprivate func roundedRectPathForSelectorViewFromPercentage(_ percentage: CGFloat) -> UIBezierPath {
-        return UIBezierPath(roundedRect: selectorView.bounds, cornerRadius: cornerRadius)
+        return UIBezierPath(roundedRect: selectorView.bounds, cornerRadius: segmentedControlCornerRadius)
     }
     
     fileprivate func leftSegmentIndexFromPercentage(_ percentage: CGFloat) -> Int {
